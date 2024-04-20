@@ -5,3 +5,7 @@ type ProcessedProp struct {
   Name string
   Value interface{}
 }
+
+func (p ProcessedProp) Addr() (position int, classes []int) {
+  return
+}
