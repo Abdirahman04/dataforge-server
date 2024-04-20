@@ -34,6 +34,7 @@ func (r Range) DateR() (min,max time.Time) {
 }
 
 type Prop struct {
+  Id int `json:"id"`
   Name string `json:"name"`
   Type string `json:"type"`
   Length int `json:"length"`
