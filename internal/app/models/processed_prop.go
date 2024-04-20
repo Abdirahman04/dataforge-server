@@ -1,23 +1,28 @@
 package models
 
+import "strconv"
+
 type ProcessedProp struct {
-  Id int
+  Id string
   Name string
   Value interface{}
 }
 
 func (p ProcessedProp) Addr() (position int, classes []int) {
-  point := 100
+  point, ln := 100, 2
 
-  if p.Id > point {
-    num := p.Id
+  position, _ = strconv.Atoi(p.Id[:3])
+  if len(p.Id) < ln {
+    return
+  }
+  cls, _ := strconv.Atoi(p.Id[3:])
+
+  if cls > point {
+    num := cls
     for num > point {
       classes = append(classes, num % point)
       num = int(num / point)
     }
-    position = num
-  } else {
-    position = p.Id
   }
   return
 }
