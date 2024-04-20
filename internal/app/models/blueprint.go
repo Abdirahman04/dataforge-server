@@ -15,8 +15,10 @@ type Prop struct {
   Type string `json:"type"`
   Length int `json:"length"`
   In []string `json:"in"`
-  Range []string `json:"range"`
+  Range Range `json:"range"`
   Unique bool `json:"unique"`
+  Prefix string `json:"prefix"`
+  Suffix string `json:"suffix"`
 }
 
 func (p Prop) GetInInt() (arr []int) {
