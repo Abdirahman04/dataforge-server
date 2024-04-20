@@ -11,11 +11,11 @@ type ProcessedProp struct {
 func (p ProcessedProp) Addr() (position int, classes []int) {
   point, ln := 100, 2
 
-  position, _ = strconv.Atoi(p.Id[:3])
+  position, _ = strconv.Atoi(p.Id[:2])
   if len(p.Id) < ln {
     return
   }
-  cls, _ := strconv.Atoi(p.Id[3:])
+  cls, _ := strconv.Atoi(p.Id[2:])
 
   if cls > point {
     num := cls
