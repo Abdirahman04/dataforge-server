@@ -96,3 +96,16 @@ type Blueprint struct {
   Volume int `json:"volume"`
   Props []Prop `json:"props"`
 }
+
+func (b Blueprint) IsValidRangeInt() bool {
+  for _, e := range b.Props {
+    if e.Unique {
+      min, max := e.Range.IntR()
+      if max - min <= b.Volume {
+        return false
+      }
+    }
+  }
+
+  return true
+}
