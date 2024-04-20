@@ -109,3 +109,17 @@ func (b Blueprint) IsValidRangeInt() bool {
 
   return true
 }
+
+func (b Blueprint) IsValidRangeDate() bool {
+  for _, e := range b.Props {
+    if e.Unique {
+      min, max := e.Range.DateR()
+      duration := int((max.Sub(min)).Hours() / 24)
+      if duration <= b.Volume {
+        return false
+      }
+    }
+  }
+
+  return true
+}
