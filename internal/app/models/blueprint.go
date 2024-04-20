@@ -72,6 +72,11 @@ func (p Prop) GetInDate() (arr []time.Time) {
   return
 }
 
+func (p Prop) GetPrefixInt() (prefix int) {
+  prefix, _ = strconv.Atoi(p.Prefix)
+  return
+}
+
 type Blueprint struct {
   Volume int `json:"volume"`
   Props []Prop `json:"props"`
