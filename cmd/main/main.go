@@ -15,7 +15,8 @@ func main() {
   
   mux := http.NewServeMux()
 
-  mux.HandleFunc("/",handlers.Info)
+  mux.HandleFunc("/", handlers.Info)
+  mux.HandleFunc("/datacraft/", handlers.DataCraftHandler)
 
   if err := http.ListenAndServe(port, mux);err != nil {
     log.Fatal(err)
