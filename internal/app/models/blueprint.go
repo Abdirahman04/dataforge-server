@@ -24,6 +24,15 @@ func (r Range) FloatR() (min,max float64) {
   return
 }
 
+func (r Range) DateR() (min,max time.Time) {
+  layout := "2006-02-01"
+
+  min, _ = time.Parse(layout, r.Min)
+  max, _ = time.Parse(layout, r.Max)
+
+  return
+}
+
 type Prop struct {
   Name string `json:"name"`
   Type string `json:"type"`
