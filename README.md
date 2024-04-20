@@ -1,3 +1,4 @@
+## Blueprint
 ```
 type Range struct {
   Min string
@@ -43,6 +44,7 @@ func (b Blueprint) IsValidRangeDate() bool
 ```
 * Blueprint defines the actual schematics of the entire json object
 * IsValidRangeInt and IsValidRangeDate checks if the total number of data that can be derived from the range is higher the Blueprint.Volume for props that have the Unique property as true
+## ProcessedProp
 ```
 type ProcessedProp struct {
   Id string
