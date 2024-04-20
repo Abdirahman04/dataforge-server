@@ -8,6 +8,7 @@ import (
 type Range struct {
   Min string `json:"min"`
   Max string `json:"max"`
+  Selected bool `json:"selected"`
 }
 
 func (r Range) IntR() (min,max int) {
