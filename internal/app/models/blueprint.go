@@ -10,6 +10,20 @@ type Range struct {
   Max string `json:"max"`
 }
 
+func (r Range) IntR() (min,max int) {
+  min, _ = strconv.Atoi(r.Min)
+  max, _ = strconv.Atoi(r.Max)
+
+  return
+}
+
+func (r Range) FloatR() (min,max float64) {
+  min, _ = strconv.ParseFloat(r.Min, 64)
+  max, _ = strconv.ParseFloat(r.Max, 64)
+
+  return
+}
+
 type Prop struct {
   Name string `json:"name"`
   Type string `json:"type"`
