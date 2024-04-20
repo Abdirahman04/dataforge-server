@@ -83,7 +83,12 @@ func (p Prop) GetPrefixFloat() (prefix float64) {
 }
 
 func (p Prop) GetSuffixInt() (prefix int) {
-  prefix, _ = strconv.Atoi(p.Prefix)
+  prefix, _ = strconv.Atoi(p.Suffix)
+  return
+}
+
+func (p Prop) GetSuffixFloat() (prefix float64) {
+  prefix, _ = strconv.ParseFloat(p.Suffix, 64)
   return
 }
 
