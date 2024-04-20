@@ -5,6 +5,11 @@ import (
 	"time"
 )
 
+type Range struct {
+  Min string `json:"min"`
+  Max string `json:"max"`
+}
+
 type Prop struct {
   Name string `json:"name"`
   Type string `json:"type"`
