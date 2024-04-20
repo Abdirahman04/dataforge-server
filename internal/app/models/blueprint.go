@@ -77,6 +77,11 @@ func (p Prop) GetPrefixInt() (prefix int) {
   return
 }
 
+func (p Prop) GetPrefixFloat() (prefix float64) {
+  prefix, _ = strconv.ParseFloat(p.Prefix, 64)
+  return
+}
+
 type Blueprint struct {
   Volume int `json:"volume"`
   Props []Prop `json:"props"`
