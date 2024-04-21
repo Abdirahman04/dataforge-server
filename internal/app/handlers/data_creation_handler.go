@@ -5,6 +5,7 @@ import (
 	"net/http"
 
 	"github.com/Abdirahman04/dataforge-server/internal/app/models"
+	"github.com/Abdirahman04/dataforge-server/internal/app/services"
 )
 
 func DataCraftHandler(w http.ResponseWriter, r *http.Request) {
@@ -15,8 +16,10 @@ func DataCraftHandler(w http.ResponseWriter, r *http.Request) {
     w.Write([]byte(err.Error()))
     return
   }
+  
+  list := services.CreateList(DataSchema)
 
-  res, err := json.Marshal(DataSchema)
+  res, err := json.Marshal(list)
   if err != nil {
     w.WriteHeader(http.StatusInternalServerError)
     w.Write([]byte(err.Error()))
