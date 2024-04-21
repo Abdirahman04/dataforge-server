@@ -8,7 +8,9 @@ func CreateList(b models.Blueprint) []map[string]interface{} {
   for i := 0;i < b.Volume;i++ {
     obj := make(map[string]interface{})
     for _, e := range b.Props {
-      obj[e.Name] = "hello"
+      if e.Type == "string" {
+        obj[e.Name] = StringerForge(e).Value
+      }
     }
     objs = append(objs, obj)
   }
