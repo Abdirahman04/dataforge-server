@@ -1,6 +1,6 @@
 # DataForge
 ----
-## Create data like magic
+## Create data fast
 ## Blueprint
 ```
 type Range struct {
