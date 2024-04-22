@@ -11,6 +11,8 @@ func CreateList(b models.Blueprint) []map[string]interface{} {
       var prop models.ProcessedProp
       if e.Type == "string" {
         prop = StringerForge(e)
+      } else if e.Type == "int" {
+        prop = InterForge(e)
       }
       obj[e.Name] = prop.Value
     }
