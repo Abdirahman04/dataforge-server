@@ -2,7 +2,6 @@ package stringer
 
 import (
 	"math/rand"
-	"strings"
 )
 
 func GetLetters(ln int) string {
@@ -23,7 +22,7 @@ func GetConsonants(ln int) string {
   var str []byte
 
   for i := 0;i < ln;i++ {
-    str = append(str, letters[rand.Intn(26)])
+    str = append(str, letters[rand.Intn(21)])
   }
 
   return string(str)
@@ -35,7 +34,7 @@ func GetVowels(ln int) string {
   var str []byte
 
   for i := 0;i < ln;i++ {
-    str = append(str, letters[rand.Intn(26)])
+    str = append(str, letters[rand.Intn(5)])
   }
 
   return string(str)
