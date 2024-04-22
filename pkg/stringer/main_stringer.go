@@ -1,6 +1,9 @@
 package stringer
 
-import "math/rand"
+import (
+	"math/rand"
+	"strings"
+)
 
 func GetLetters(ln int) string {
   letters := [26]byte{'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'}
@@ -38,6 +41,17 @@ func GetVowels(ln int) string {
   return string(str)
 }
 
+func DoubleSyllable(ln int) string {
+  con := [5]string{"c","g","s","t","n"}
+  var str string
+
+  for i := 0;i < ln;i++ {
+    str += con[rand.Intn(5)] + GetVowels(1)
+  }
+
+  return str
+}
+
 func GetSyllables(ln int) string {
   cc1 := [5]byte{'c','g','s','t','n'}
   cc2 := [2]byte{'h','l'}
@@ -46,7 +60,7 @@ func GetSyllables(ln int) string {
   if ln == 1 {
     return GetLetters(1)
   } else if ln == 2 {
-    return ec[rand.Intn(10)] + GetVowels(1)
+    return DoubleSyllable(2)
   } else if ln == 3 {
     return cc1[rand.Intn(5)] + cc2[rand.Intn(2)] + GetVowels(1)
   } else {
