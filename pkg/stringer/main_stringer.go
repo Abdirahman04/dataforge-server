@@ -41,29 +41,43 @@ func GetVowels(ln int) string {
   return string(str)
 }
 
-func DoubleSyllable(ln int) string {
-  con := [5]string{"c","g","s","t","n"}
+func GetDoubleSyllables(ln int) string {
+  con := [10]string{"b","d","g","k","l","m","n","p","s","t"}
   var str string
 
   for i := 0;i < ln;i++ {
-    str += con[rand.Intn(5)] + GetVowels(1)
+    str += con[rand.Intn(10)] + GetVowels(1)
+  }
+
+  return str
+}
+
+func GetTripleSyllables(ln int) string {
+  cc1 := [4]string{"c","g","s","t"}
+  cc2 := [2]string{"h","l"}
+  var str string
+
+  for i := 0;i < ln;i++ {
+    str += cc1[rand.Intn(4)] + cc2[rand.Intn(2)] + GetVowels(1)
   }
 
   return str
 }
 
 func GetSyllables(ln int) string {
-  cc1 := [5]byte{'c','g','s','t','n'}
-  cc2 := [2]byte{'h','l'}
-  ec := [10]byte{'b','d','g','k','l','m','n','p','s','t'}
+  ec := [10]string{"b","d","g","k","l","m","n","p","s","t"}
 
   if ln == 1 {
     return GetLetters(1)
   } else if ln == 2 {
-    return DoubleSyllable(2)
+    return GetDoubleSyllables(1)
   } else if ln == 3 {
-    return cc1[rand.Intn(5)] + cc2[rand.Intn(2)] + GetVowels(1)
+    return GetTripleSyllables(1)
   } else {
-    return GetLetters(ln)
+    if ln % 2 == 0 {
+      return GetDoubleSyllables(ln / 2)
+    } else {
+      return GetDoubleSyllables(ln / 2) + ec[rand.Intn(10)]
+    }
   }
 }
