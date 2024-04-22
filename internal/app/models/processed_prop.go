@@ -8,6 +8,14 @@ type ProcessedProp struct {
   Value interface{}
 }
 
+func NewProcessedProp(id, name string, val interface{}) ProcessedProp {
+  return ProcessedProp{
+    Id: id,
+    Name: name,
+    Value: val,
+  }
+}
+
 func (p ProcessedProp) Addr() (position int, classes []int) {
   point, ln := 100, 2
 
