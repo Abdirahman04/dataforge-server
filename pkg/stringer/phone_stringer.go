@@ -7,5 +7,8 @@ import (
 )
 
 func GetPhoneNumber() string {
-  return "+" + strconv.Itoa(inter.RandomNumber(3)) + strconv.Itoa(inter.RandomNumber(3)) + strconv.Itoa(inter.RandomNumber(3))
+  nm := func() string {
+    return strconv.Itoa(inter.RandomNumber(3))
+  }
+  return "+" + nm() + "-" + nm() + "-" + nm() + "-" + nm()
 }
