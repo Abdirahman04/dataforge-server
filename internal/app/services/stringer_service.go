@@ -13,6 +13,8 @@ func StringerForge(prop models.Prop) models.ProcessedProp {
     str = stringer.GetSyllables(prop.Length)
   } else if prop.Class == "email" {
     str = stringer.GetEmail(prop.Length)
+  } else if prop.Class == "phone" {
+    str = stringer.GetPhoneNumber()
   }
 
   newProp := models.NewProcessedProp(prop.Id, prop.Name, str)
