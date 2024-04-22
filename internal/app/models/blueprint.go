@@ -38,6 +38,7 @@ type Prop struct {
   Id string `json:"id"`
   Name string `json:"name"`
   Type string `json:"type"`
+  Class string `json:"class"`
   Length int `json:"length"`
   In []string `json:"in"`
   Range Range `json:"range"`
