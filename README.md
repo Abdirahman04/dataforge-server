@@ -62,9 +62,10 @@ func (pp ProcessedProp) Addr() (position int, classes []int)
 func CreateList(b models.Blueprint) []map[string]interface{}
 func StringerForge(prop models.Prop) models.ProcessedProp
 func InterForge(prop models.Prop) models.ProcessedProp
+func FloaterForge(prop models.Prop) models.ProcessedProp
 ```
 * CreateList takes in Blueprint and returns an array of maps, each map is a single object where the key, value are the property name, value
-* StringerForge and InterForge take in a single property and return a ProcessedProp
+* StringerForge, FloaterForge and InterForge take in a single property and return a ProcessedProp
 ## Stringer
 ```
 func GetLetters(ln int) string
@@ -89,3 +90,8 @@ func GetPhoneNumber() string
 func RandomNumber(ln int) int
 ```
 * RandomNumber returns a number with ln number of digits
+## Floater
+```
+func RandomFloat(ln, dec int) float64
+```
+* RandomFloat returns a number with ln digits and dec decimals
