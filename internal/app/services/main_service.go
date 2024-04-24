@@ -1,6 +1,10 @@
 package services
 
-import "github.com/Abdirahman04/dataforge-server/internal/app/models"
+import (
+	"math/rand"
+
+	"github.com/Abdirahman04/dataforge-server/internal/app/models"
+)
 
 func CreateList(b models.Blueprint) []map[string]interface{} {
   var objs []map[string]interface{}
@@ -9,7 +13,9 @@ func CreateList(b models.Blueprint) []map[string]interface{} {
     obj := make(map[string]interface{})
     for _, e := range b.Props {
       var prop models.ProcessedProp
-      if e.Type == "string" {
+      if len(e.In) != 0 {
+        prop = GetFromIn(e)
+      } else if e.Type == "string" {
         prop = StringerForge(e)
       } else if e.Type == "int" {
         prop = InterForge(e)
@@ -24,4 +30,12 @@ func CreateList(b models.Blueprint) []map[string]interface{} {
   }
 
   return objs
+}
+
+func GetFromIn(prop models.Prop) models.ProcessedProp {
+  var newProp models.ProcessedProp
+  if prop.Type == "string" {
+    newProp = models.NewProcessedProp(prop.Id, prop.Name, prop.In[rand.Intn(len(prop.In))])
+  }
+  return newProp
 }
