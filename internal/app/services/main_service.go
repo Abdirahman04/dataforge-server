@@ -2,6 +2,7 @@ package services
 
 import (
 	"math/rand"
+	"strconv"
 
 	"github.com/Abdirahman04/dataforge-server/internal/app/models"
 )
@@ -36,6 +37,20 @@ func GetFromIn(prop models.Prop) models.ProcessedProp {
   var newProp models.ProcessedProp
   if prop.Type == "string" {
     newProp = models.NewProcessedProp(prop.Id, prop.Name, prop.In[rand.Intn(len(prop.In))])
+  } else if prop.Type == "int" {
+    var nums []int
+    for _, e := range prop.In {
+      num, _ := strconv.Atoi(e)
+      nums = append(nums, num)
+    }
+    newProp = models.NewProcessedProp(prop.Id, prop.Name, nums[rand.Intn(len(nums))])
+  } else if prop.Type == "float" {
+    var nums []float64
+    for _, e := range prop.In {
+      num, _ := strconv.ParseFloat(e, 64)
+      nums = append(nums, num)
+    }
+    newProp = models.NewProcessedProp(prop.Id, prop.Name, nums[rand.Intn(len(nums))])
   }
   return newProp
 }
