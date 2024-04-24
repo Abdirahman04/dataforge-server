@@ -6,6 +6,7 @@
 type Range struct {
   Min string
   Max string
+  Selected bool
 }
 
 func (r Range) IntR() (min, max int)
@@ -60,11 +61,14 @@ func (pp ProcessedProp) Addr() (position int, classes []int)
 ## Service
 ```
 func CreateList(b models.Blueprint) []map[string]interface{}
+func GetFromIn(prop models.Prop) models.ProcessedProp
 func StringerForge(prop models.Prop) models.ProcessedProp
 func InterForge(prop models.Prop) models.ProcessedProp
 func FloaterForge(prop models.Prop) models.ProcessedProp
+func BoolerForge(prop models.Prop) models.ProcessedProp
 ```
 * CreateList takes in Blueprint and returns an array of maps, each map is a single object where the key, value are the property name, value
+* GetFromIn takes in a property and returns a ProcessedProp from the prop.In
 * StringerForge, FloaterForge and InterForge take in a single property and return a ProcessedProp
 ## Stringer
 ```
@@ -95,3 +99,8 @@ func RandomNumber(ln int) int
 func RandomFloat(ln, dec int) float64
 ```
 * RandomFloat returns a number with ln digits and dec decimals
+## Booler
+```
+func RandomBool() bool
+```
+* RandomBool returns either true or false
