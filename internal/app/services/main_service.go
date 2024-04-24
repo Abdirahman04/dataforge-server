@@ -15,6 +15,8 @@ func CreateList(b models.Blueprint) []map[string]interface{} {
         prop = InterForge(e)
       } else if e.Type == "float" {
         prop = FloaterForge(e)
+      } else if e.Type == "bool" {
+        prop = BoolerForge(e)
       }
       obj[e.Name] = prop.Value
     }
