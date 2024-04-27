@@ -9,6 +9,12 @@ import (
 	"github.com/Abdirahman04/dataforge-server/pkg/inter"
 )
 
+func ListForge(b models.Blueprint) []map[string]interface{} {
+  var objs []map[string]interface{}
+
+  return objs
+}
+
 func CreateList(b models.Blueprint) []map[string]interface{} {
   var objs []map[string]interface{}
 
