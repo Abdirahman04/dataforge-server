@@ -5,6 +5,7 @@ import (
 	"strconv"
 
 	"github.com/Abdirahman04/dataforge-server/internal/app/models"
+	"github.com/Abdirahman04/dataforge-server/pkg/dater"
 	"github.com/Abdirahman04/dataforge-server/pkg/inter"
 )
 
@@ -67,6 +68,10 @@ func GetFromRange(prop models.Prop) models.ProcessedProp {
     minNum, maxNum := prop.Range.IntR()
     num := inter.RandomIntFromRange(minNum, maxNum)
     newProp = models.NewProcessedProp(prop.Id, prop.Name, num)
+  } else if prop.Type == "date" {
+    start, end := prop.Range.DateR()
+    date := dater.RangomDateFromRange(start, end)
+    newProp = models.NewProcessedProp(prop.Id, prop.Name, date)
   }
 
   return newProp
