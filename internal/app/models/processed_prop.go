@@ -1,7 +1,5 @@
 package models
 
-import "strconv"
-
 type ProcessedProp struct {
   Id Id
   Name string
