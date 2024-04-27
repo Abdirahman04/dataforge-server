@@ -34,8 +34,13 @@ func (r Range) DateR() (min,max time.Time) {
   return
 }
 
+type Id struct {
+  Root bool
+  Parent string
+}
+
 type Prop struct {
-  Id string `json:"id"`
+  Id Id `json:"id"`
   Name string `json:"name"`
   Type string `json:"type"`
   Class string `json:"class"`
