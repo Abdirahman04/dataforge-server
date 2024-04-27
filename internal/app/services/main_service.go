@@ -5,6 +5,7 @@ import (
 	"strconv"
 
 	"github.com/Abdirahman04/dataforge-server/internal/app/models"
+	"github.com/Abdirahman04/dataforge-server/pkg/inter"
 )
 
 func CreateList(b models.Blueprint) []map[string]interface{} {
@@ -54,5 +55,17 @@ func GetFromIn(prop models.Prop) models.ProcessedProp {
     }
     newProp = models.NewProcessedProp(prop.Id, prop.Name, nums[rand.Intn(len(nums))])
   }
+  return newProp
+}
+
+func GetFromRange(prop models.Prop) models.ProcessedProp {
+  var newProp models.ProcessedProp
+
+  if prop.Type == "int" {
+    minNum, maxNum := prop.Range.IntR()
+    num := inter.RandomIntFromRange(minNum, maxNum)
+    newProp = models.NewProcessedProp(prop.Id, prop.Name, num)
+  }
+
   return newProp
 }
