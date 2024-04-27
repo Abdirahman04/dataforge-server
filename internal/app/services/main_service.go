@@ -17,6 +17,8 @@ func CreateList(b models.Blueprint) []map[string]interface{} {
       var prop models.ProcessedProp
       if len(e.In) != 0 {
         prop = GetFromIn(e)
+      } else if e.Range.Selected {
+        prop = GetFromRange(e)
       } else if e.Type == "string" {
         prop = StringerForge(e)
       } else if e.Type == "int" {
