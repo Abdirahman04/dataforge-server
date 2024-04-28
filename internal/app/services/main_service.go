@@ -9,10 +9,14 @@ import (
 	"github.com/Abdirahman04/dataforge-server/pkg/inter"
 )
 
+const rootLevel = "1_1_1_1"
+
 func ListForge(b models.Blueprint) []map[string]interface{} {
   var objs []map[string]interface{}
 
-
+  for i := 0;i < b.Volume;i++ {
+    objs = append(objs, CreateList(b.Props))
+  }
 
   return objs
 }
