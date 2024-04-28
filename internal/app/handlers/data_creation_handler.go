@@ -17,7 +17,7 @@ func DataCraftHandler(w http.ResponseWriter, r *http.Request) {
     return
   }
   
-  list := services.CreateList(DataSchema)
+  list := services.ListForge(DataSchema)
 
   res, err := json.Marshal(list)
   if err != nil {
